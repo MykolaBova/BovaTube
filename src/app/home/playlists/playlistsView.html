@@ -1,0 +1,101 @@
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div>
+                        <button class="btn btn-success"
+                                title="Add  playlist"
+                                ng-click="vm.toggleAddPlaylist()"
+                                >
+
+                            <i class="glyphicon glyphicon-plus"></i>
+                        </button>
+                    </div>
+
+                    <span id="status">{{vm.status}}</span>
+
+                    <div class="panel panel-default" ng-if="vm.editMode">
+                        <div class="panel-body">
+
+                            <h4 ng-if="vm.editMode">
+                                Create new playlist
+                            </h4>
+
+                            <div>
+                                <div ng-if="vm.editMode">
+                                    <label>New playlist title: </label>
+
+                                    <div>
+                                        <label>
+                                            <input type="text" class="full-width" ng-minlength="1"
+                                                   ng-model="vm.newPlaylistTitle"/>
+                                        </label>
+                                    </div>
+
+                                </div>
+
+                                <div ng-if="vm.editMode">
+                                    <label>New playlist description: </label>
+
+                                    <div>
+                                        <label>
+                                            <input type="text" class="full-width"
+                                                   ng-model="vm.newPlaylistDescription"/>
+                                        </label>
+                                    </div>
+
+                                </div>
+
+                                <div ng-if="vm.editMode">
+                                    <div class="">
+                                        <button class="btn btn-warning pull-left"
+                                                ng-click="vm.playlistsChangesReject()">
+                                            <i class="glyphicon glyphicon-remove"></i>
+                                        </button>
+                                        <button class="btn btn-success pull-right"
+                                                ng-click="vm.playlistsChangesAccept()">
+                                            <i class="glyphicon glyphicon-ok"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <table class="table table-hover table-responsive">
+                        <tr ng-repeat="playlist in vm.playlistService.playlists">
+                            <td>
+                                <img ng-src="{{ playlist.snippet.thumbnails.default.url }}"
+                                     alt="Smiley face" height="50" width="100">
+                            </td>
+                            <td>{{ playlist.snippet.title }}</td>
+                            <td>{{ playlist.snippet.description }}</td>
+
+                            <td>
+                                <button type="button" class="close-button" title="Remove playlist"
+                                        ng-click="vm.playlistService.removePlaylist(playlist)">
+                                    <i class="glyphicon glyphicon-remove"></i>
+                                </button>
+                            </td>
+                            <td>
+                                <button type="button" class="close-button" title="Edit playlist"
+                                        ng-click="vm.editPlaylist(playlist)">
+                                    <i class="glyphicon glyphicon-pencil"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <button class="btn btn-default pull-right visible-sm visible-xs" ng-click="vm.toggleEdit()"
+                        title="Edit mode">
+                    <i class="glyphicon glyphicon-list"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+

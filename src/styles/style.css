@@ -1,0 +1,88 @@
+#playlistDropdown {
+    width: 160px;
+}
+.playlist-control {
+    margin-top: 10px;
+    max-height: 500px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.playlist-item {
+    width: 100%;
+    text-align: left;
+}
+.player-video-title {
+    font-size: 24px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin: 10px;
+}
+.player-container {
+    margin: 10px 0 10px 0;
+}
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 35px;
+    height: 0;
+    overflow: hidden;
+}
+.no-video-available {
+    color: #d0d0d0;
+    font-size: 44px;
+    font-weight: 300;
+    line-height: 72px;
+    margin: 0 0 24px;
+    text-align: center;
+}
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.nested-view {
+    width: 100%;
+    height: 500px;
+    background-color: #cccccc;
+    margin-top: 10px;
+}
+.close-button {
+    background: transparent none repeat scroll 0 0;
+    border: 0 none;
+    padding: 0;
+    outline: medium none;
+}
+.horizontal-center {
+    text-align: center;
+}
+.full-width {
+    width: 100%;
+}
+.top-right-corner {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.welcome-text {
+    font-size: 32px;
+}
+.user-minipic {
+    height: 22px;
+    width: 22px;
+    border-radius: 50%;
+}
+.clickable {
+    cursor: pointer;
+}
+.yt-thumbnail {
+    max-height: 90px;
+    max-width: 120px;
+}
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:hover,
+.navbar-inverse .navbar-nav > .active > a:focus,
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-nav > li > a:focus {
+    color: aqua;
+}

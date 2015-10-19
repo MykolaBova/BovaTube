@@ -1,0 +1,29 @@
+<h3>Edit playlist <{{vm.currentPlayList.snippet.title}}></h3>
+
+<div>
+    <button class="btn btn-success"
+            title="Add  playlist"
+            ng-click="vm.editPlaylist()"
+            >
+
+        <i class="glyphicon glyphicon-plus"></i>
+    </button>
+</div>
+
+<table class="table table-hover table-responsive">
+    <tr ng-repeat="item in vm.currentPlayList.items">
+        <td>
+            <img ng-src="{{ item.snippet.thumbnails.high.url }}"
+                 alt="Smiley face" height="50" width="100">
+        </td>
+
+        <td>{{item.snippet.title}}</td>
+
+        <td>
+            <button type="button" class="close-button" title="Remove playlist"
+                    ng-click="vm.playlistService.removeItemFromPlaylist(vm.currentPlayList, item)">
+                <i class="glyphicon glyphicon-remove"></i>
+            </button>
+        </td>
+    </tr>
+</table>

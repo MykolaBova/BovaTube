@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>BovaTune app</title>
+
+    <!-- Style sheets -->
+    <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="vendor/humane/css/flatty.css" rel="stylesheet">
+    <link href="src/styles/style.css" rel="stylesheet">
+
+</head>
+
+<body ng-app="ytApp" class="ng-cloak">
+    <nav class="navbar navbar-inverse" ng-controller='AuthenticationController as vm'>
+        <div class="container">
+            <a ui-sref="welcome" class="navbar-brand">About BovaTube</a>
+
+            <div class="navbar-collapse" collapse='vm.isCollapsed' ng-if="vm.isLoggedIn">
+
+                <ul class="nav navbar-nav">
+                    <li ng-class="{ active: vm.isActive('home.playlists') }"><a ui-sref="home.playlists">Playlists</a></li>
+                </ul>
+
+                <!--Login block-->
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a>
+                            {{vm.userInfo.fullName}}
+                            <img class="user-minipic"
+                                ng-if="vm.userInfo.picture"
+                                ng-src="{{vm.userInfo.picture}}">
+                            <i class="glyphicon glyphicon-user" ng-if="!vm.userInfo.picture"></i>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a ng-click="vm.logOut()" class="clickable">
+                            Logout
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="navbar-collapse clickable" collapse='vm.isCollapsed' ng-if="!vm.isLoggedIn">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a ng-click="vm.logIn()">Log In</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div ui-view></div>
+    </div>
+
+    <!-- build:js js/app.js -->
+    <!-- Library Scripts -->
+    <script src="vendor/angular/angular.min.js"></script>
+    <script src="vendor/angular/angular-resource.min.js"></script>
+    <script src="vendor/angular/angular-ui-router.min.js"></script>
+    <script src="vendor/angular-google-api/angular-google-gapi.js"></script>
+    <script src="vendor/underscore/underscore-min.js"></script>
+    <script src="vendor/bootstrap/js/ui-bootstrap-tpls-0.13.2.min.js"></script>
+    <script src="vendor/humane/js/humane.min.js"></script>
+
+    <!-- Application Scripts -->
+    <script src="src/app/app.js"></script>
+
+    <!-- Services -->
+    <script src="src/common/services/common.services.js"></script>
+    <script src="src/common/services/authorizationService.js"></script>
+    <script src="src/common/services/playlistService.js"></script>
+    <script src="src/common/resources/playlistResource.js"></script>
+    <script src="src/common/resources/playlistItemsResource.js"></script>
+    <script src="src/common/resources/searchResource.js"></script>
+    <script src="src/common/factories/pubSub.js"></script>
+
+    <!-- Controllers -->
+    <script src="src/app/home/homeController.js"></script>
+    <script src="src/app/home/search/searchController.js"></script>
+    <script src="src/app/home/playlists/playlistsController.js"></script>
+    <script src="src/app/home/videos/videosController.js"></script>
+    <script src="src/app/authenticationController.js"></script>
+    <script src="src/app/welcome/welcomeController.js"></script>
+
+    <!-- Directives -->
+    <script src="src/common/directives/directives.js"></script>
+    <script src="src/common/directives/enterPress.js"></script>
+    <!-- inject:templates:js -->
+    <!-- endinject -->
+    <!-- endbuild -->
+
+</body>
+
+</html>

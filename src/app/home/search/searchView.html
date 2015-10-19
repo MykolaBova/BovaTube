@@ -1,0 +1,71 @@
+
+<style>
+    .submitLink {
+        background-color: transparent;
+        text-decoration: underline;
+        border: none;
+        color: blue;
+        cursor: pointer;
+    }
+
+</style>
+
+<div class="">
+
+    <!--{{vm.selectedPlaylist.snippet.title}}-->
+
+    <!--<a click='vm.editPlaylist(vm.selectedPlaylist)'>{{vm.selectedPlaylist.snippet.title}}</a>-->
+
+    <h2>
+        Add video to playlist <<button ng-click="vm.editPlaylist(vm.selectedPlaylist)"
+                                       type="button" class="submitLink">{{vm.selectedPlaylist.snippet.title}}</button>>
+    </h2>
+
+    <div class="input-group">
+        <input type="text" ng-model="vm.searchText" class="form-control"
+               enter-press="vm.getSearchResult()" placeholder="Search for...">
+        <span class="input-group-btn">
+            <button class="btn btn-default" ng-click="vm.getSearchResult()" type="button">
+                <span class="glyphicon glyphicon-search"></span>
+            </button>
+        </span>
+    </div>
+
+    <table class="table table-hover table-responsive">
+        <tbody>
+            <tr ng-repeat="searchItem in vm.searchResult">
+                <td class="horizontal-center">
+                    <img class="yt-thumbnail" ng-src="{{searchItem.snippet.thumbnails['default'].url}}">
+                </td>
+                <td>
+                    <div class="">
+                        <label>Title: </label>
+                        <span>
+                        {{searchItem.snippet.title}}
+                    </span>
+                    </div>
+                    <div class="hidden-xs">
+                        <label>Description: </label>
+                        <span>
+                        {{searchItem.snippet.description || 'none'}}
+                    </span>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <button class="btn btn-success" ng-disabled="vm.isVideoInList(searchItem)"
+                                title="Add to current playlist" ng-click="vm.addToPlayList(searchItem)">
+                            <i class="glyphicon glyphicon-plus"></i>
+                        </button>
+                    </div>
+                    <div>
+                        <button class="btn btn-error" ng-disabled="!vm.isVideoInList(searchItem)"
+                                title="Remove from current playlist" ng-click="vm.removeFromPlayList(searchItem)">
+                            <i class="glyphicon glyphicon-remove"></i>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
